@@ -1,0 +1,37 @@
+//luis angel mota perez 
+// C++ code
+//
+int counter;
+
+void setup()
+{
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, INPUT);
+  pinMode(13, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(2, LOW);
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+  if (digitalRead(8) == 1) {
+    digitalWrite(5, LOW);
+    digitalWrite(6, HIGH);
+    delay(500); // Wait for 500 millisecond(s)
+    digitalWrite(6, LOW);
+    digitalWrite(7, HIGH);
+    digitalWrite(3, LOW);
+    digitalWrite(2, HIGH);
+    for (counter = 0; counter < 3; ++counter) {
+      tone(13, 523, 1000); // play tone 60 (C5 = 523 Hz)
+      delay(2000); // Wait for 2000 millisecond(s)
+    }
+  }
+}
